@@ -1,5 +1,7 @@
 //write your code here
 window.onload = function () {
+
+
 const choices = ['piedra', 'papel', 'tijera', 'lagarto', 'spok'];
 
 const choice = prompt("Elige: piedra, papel, tijera, lagarto o spok").toLowerCase();
@@ -17,8 +19,6 @@ const getRandomChoice = () => {
     return choices[index];
 };
 
-const computerChoice = getRandomChoice();
-
 
 const determineWinner = (myChoice, computerChoice) => {
     if (myChoice === computerChoice) {
@@ -30,9 +30,11 @@ const determineWinner = (myChoice, computerChoice) => {
     }
 };
 
+const computerChoice = getRandomChoice();
+
 const result = determineWinner(choice, computerChoice);
 
-console.log(`Tú elegiste: ${choice}`);
+console.log(`Has elegido: ${choice}`);
 console.log(`La computadora eligió: ${computerChoice}`);
 console.log(`Resultado: ${result}`);
     
