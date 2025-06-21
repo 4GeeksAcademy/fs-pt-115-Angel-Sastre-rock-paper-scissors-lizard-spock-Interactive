@@ -1,10 +1,9 @@
-//write your code here
 window.onload = function () {
 
 
 const choices = ['piedra', 'papel', 'tijera', 'lagarto', 'spok'];
 
-const choice = prompt("Elige: piedra, papel, tijera, lagarto o spok").toLowerCase();
+//const choice = prompt("Elige: piedra, papel, tijera, lagarto o spok").toLowerCase();
 
 const reglas = {
     piedra: ['tijera', 'lagarto'],
@@ -32,11 +31,11 @@ const determineWinner = (myChoice, computerChoice) => {
 
 const computerChoice = getRandomChoice();
 
-const result = determineWinner(choice, computerChoice);
+//const result = determineWinner(choice, computerChoice);
 
-console.log(`Has elegido: ${choice}`);
+//console.log(`Has elegido: ${choice}`);
 console.log(`La computadora eligió: ${computerChoice}`);
-console.log(`Resultado: ${result}`);
+//console.log(`Resultado: ${result}`);
     
 
 
