@@ -1,4 +1,3 @@
-
 const choices = ['piedra', 'papel', 'tijera', 'lagarto', 'spok'];
 
 //const choice = prompt("Elige: piedra, papel, tijera, lagarto o spok").toLowerCase();
@@ -34,22 +33,28 @@ const computerChoice = getRandomChoice();
 //console.log(`Has elegido: ${choice}`);
 console.log(`La computadora eligió: ${computerChoice}`);
 //console.log(`Resultado: ${result}`);
-    
 
 
-    const showBtn = document.getElementById('showVideoBtn');
-    const videoInstructions = document.getElementById('videoInstructions');
-    const closeBtn = document.getElementById('closeBtn');
 
-    showBtn.addEventListener('click', () => {
-      videoInstructions.style.display = 'block';
-      closeBtn.style.display = 'block';
-    });
+const showBtn = document.getElementById('showVideoBtn');
+const closeBtn = document.getElementById('closeBtn');
+const videoContainer = document.getElementById('videoContainer');
 
-    closeBtn.addEventListener('click', () => {
-      videoInstructions.style.display = 'none';
-      closeBtn.style.display = 'none';
-    });
+showBtn.addEventListener('click', () => {
+    // Insertar un nuevo iframe cada vez
+    videoContainer.innerHTML = `
+        <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/_PUEoDYpUyQ?autoplay=1"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+    `;
+    closeBtn.style.display = 'block';
+});
 
-   
-    
+closeBtn.addEventListener('click', () => {
+    // Eliminar el iframe completamente para detener el video
+    videoContainer.innerHTML = '';
+    closeBtn.style.display = 'none';
+});
