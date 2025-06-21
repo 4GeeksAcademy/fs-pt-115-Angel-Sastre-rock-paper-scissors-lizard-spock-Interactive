@@ -17,25 +17,32 @@
 <body>
 	<!-- Write your HTML code here, you can delete everything withing the body tags -->
 	<div class="container-fluid text-center">
-		<h1 class="mt-5">Play against Sheldon Cooper</h1>
+		<h1 class="mt-5">Play rock, paper, scissors, lizard, Spock against Sheldon Cooper</h1>
 		<div class="container">
-			<section class="d-flex justify-content-center justify-content-around mb-5 mt-5">
+			<p class="mt-5">
+				If you need instructions about the game, press this button.
+			</p>
+			<div class="d-flex justify-content-center gap-5">
+				<button id="showVideoBtn" class="">Instructions</button> <button class="botonClose" id="closeBtn">Cerrar</button>
+			</div>
+			<div id="videoContainer d-flex justify-content-center">
+				<iframe id="videoInstructions" class="videoInstructions"
+					src="https://www.youtube.com/embed/_PUEoDYpUyQ?si=L9oODezoxnaU0pQu" title="YouTube video player"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			</div>
+		</div>
+
+		<div class="container">
+			<section class="d-flex justify-content-center justify-content-between mb-5 mt-5">
 				<button id="rock" class="gamer-button">Rock &#x1f44a;</button>
 				<button id="paper" class="button">Paper &#x1F4C4;</button>
 				<button id="scissors" class="button">Scissors &#9986;</button>
 				<button id="lizard" class="button">Lizard &#x1F98E;</button>
 				<button id="spock" class="button">Spock &#128406;</button>
 			</section>
-			<div class="ratio ratio-16x9">
-				<iframe class="w-100 h-100" src="https://www.youtube.com/embed/_PUEoDYpUyQ?si=L9oODezoxnaU0pQu"
-					title="YouTube video player" frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-			</div>
 
-		</div>
-		<div class="fixed-bottom p-4">
-			Made with ❤️ by Monkeyjp
 		</div>
 	</div>
 

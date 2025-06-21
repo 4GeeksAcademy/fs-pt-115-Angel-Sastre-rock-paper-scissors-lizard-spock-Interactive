@@ -75,3 +75,22 @@ button,
 button::before {
   box-sizing: border-box;
 }
+
+.videoContainer {
+  
+}
+
+.videoInstructions {
+  width: 100vh;
+  height: 100vh;
+  display: none;
+ 
+}
+
+.botonClose {
+  display: none;
+}
+
+.buttonSection {
+  margin: 0 auto;
+}

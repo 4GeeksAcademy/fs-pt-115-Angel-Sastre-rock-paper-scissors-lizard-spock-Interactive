@@ -1,5 +1,3 @@
-window.onload = function () {
-
 
 const choices = ['piedra', 'papel', 'tijera', 'lagarto', 'spok'];
 
@@ -39,7 +37,19 @@ console.log(`La computadora eligió: ${computerChoice}`);
     
 
 
+    const showBtn = document.getElementById('showVideoBtn');
+    const videoInstructions = document.getElementById('videoInstructions');
+    const closeBtn = document.getElementById('closeBtn');
 
-}
+    showBtn.addEventListener('click', () => {
+      videoInstructions.style.display = 'block';
+      closeBtn.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      videoInstructions.style.display = 'none';
+      closeBtn.style.display = 'none';
+    });
+
    
     
