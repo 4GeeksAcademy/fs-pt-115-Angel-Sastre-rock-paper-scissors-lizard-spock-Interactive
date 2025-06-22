@@ -1,61 +1,56 @@
-const opciones = ["Piedra", "Papel", "Tijera", "Lagarto", "Spock"];
+const choices = ["Rock", "Paper", "Scissors", "Lizard", "Spock"];
 
-
-const botones = document.querySelectorAll('button');
-const resultado = document.getElementById('result');
-const resultadoImg = document.getElementById('resultImg');
+const buttons = document.querySelectorAll('button');
+const result = document.getElementById('result');
+const resultImg = document.getElementById('resultImg');
 const showVideoBtn = document.getElementById('showVideoBtn');
 const videoInstructions = document.getElementById('videoContainer');
 const closeBtn = document.getElementById('closeBtn');
 
-const imagenes = {
+const images = {
     win: 'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmRwbDJoNmVmMTZiOTBwcTdvZjhkeng0ZmdtOGRiNDVmZXBwMmIzNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pWYReekqQW72U/giphy.gif',
     lose: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnFjZGVqczduYzEzZmI2OGI4Njl5NDM4czB1bTgwOXhnMTN5bjMyMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/CV61LRKyQf6P6/giphy.gif',
     draw: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnFjZGVqczduYzEzZmI2OGI4Njl5NDM4czB1bTgwOXhnMTN5bjMyMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5WwQfUDJlh9F6/giphy.gif'
 };
 
-const reglas = {
-    Piedra: { ganaA: ["Tijera", "Lagarto"], mensaje: { Tijera: "Piedra aplasta tijera", Lagarto: "Piedra aplasta lagarto" } },
-    Papel: { ganaA: ["Piedra", "Spock"], mensaje: { Piedra: "Papel envuelve piedra", Spock: "Papel desaprueba a Spock" } },
-    Tijera: { ganaA: ["Papel", "Lagarto"], mensaje: { Papel: "Tijera corta papel", Lagarto: "Tijera decapita lagarto" } },
-    Lagarto: { ganaA: ["Spock", "Papel"], mensaje: { Spock: "Lagarto envenena a Spock", Papel: "Lagarto come papel" } },
-    Spock: { ganaA: ["Tijera", "Piedra"], mensaje: { Tijera: "Spock rompe tijera", Piedra: "Spock vaporiza piedra" } }
+const rules = {
+    Rock: { winsAgainst: ["Scissors", "Lizard"], message: { Scissors: "Rock crushes Scissors", Lizard: "Rock crushes Lizard" } },
+    Paper: { winsAgainst: ["Rock", "Spock"], message: { Rock: "Paper covers Rock", Spock: "Paper disproves Spock" } },
+    Scissors: { winsAgainst: ["Paper", "Lizard"], message: { Paper: "Scissors cuts Paper", Lizard: "Scissors decapitates Lizard" } },
+    Lizard: { winsAgainst: ["Spock", "Paper"], message: { Spock: "Lizard poisons Spock", Paper: "Lizard eats Paper" } },
+    Spock: { winsAgainst: ["Scissors", "Rock"], message: { Scissors: "Spock smashes Scissors", Rock: "Spock vaporizes Rock" } }
 };
 
-
-botones.forEach(boton => {
-    boton.addEventListener('click', handlePlayerChoice);
+buttons.forEach(button => {
+    button.addEventListener('click', handlePlayerChoice);
 });
 
 function handlePlayerChoice(event) {
-    const opcionJugador = event.target.getAttribute('data-option');
-    jugar(opcionJugador);
+    const playerChoice = event.target.getAttribute('data-option');
+    play(playerChoice);
 }
 
-function jugar(opcionJugador) {
-    
-    const opcionMaquina = opciones[Math.floor(Math.random() * opciones.length)];
+function play(opcionJugador) {
+    const opcionMaquina = choices[Math.floor(Math.random() * choices.length)];
 
     if (opcionJugador === opcionMaquina) {
-        resultado.textContent = `Empate. Ambos eligieron ${opcionJugador}.`;
-        resultadoImg.src = imagenes.draw;
+        result.textContent = `Draw. Both chose ${opcionJugador}.`;
+        resultImg.src = images.draw;
         return;
     }
 
-    if (reglas[opcionJugador].ganaA.includes(opcionMaquina)) {
-        const mensaje = reglas[opcionJugador].mensaje[opcionMaquina];
-        resultado.textContent = `${mensaje}. ¡Ganaste! Sheldon eligió ${opcionMaquina}.`;
-        resultadoImg.src = imagenes.win;
+    if (rules[opcionJugador].winsAgainst.includes(opcionMaquina)) {
+        const mensaje = rules[opcionJugador].message[opcionMaquina];
+        result.textContent = `You won! ${mensaje}.  Sheldon chose ${opcionMaquina}.`;
+        resultImg.src = images.win;
     } else {
-        const mensaje = reglas[opcionMaquina].mensaje[opcionJugador];
-        resultado.textContent = `${mensaje}. Sheldon ganó. Sheldon eligió ${opcionMaquina}.`;
-        resultadoImg.src = imagenes.lose;
+        const mensaje = rules[opcionMaquina].message[opcionJugador];
+        result.textContent = `${mensaje}. Sheldon won. Sheldon chose ${opcionMaquina}.`;
+        resultImg.src = images.lose;
     }
 }
 
-
 showVideoBtn.addEventListener('click', () => {
-    // Insertar un nuevo iframe cada vez
     videoInstructions.innerHTML = `
         <iframe width="560" height="315"
             src="https://www.youtube.com/embed/_PUEoDYpUyQ?autoplay=1"
@@ -68,7 +63,6 @@ showVideoBtn.addEventListener('click', () => {
 });
 
 closeBtn.addEventListener('click', () => {
-    // Eliminar el iframe completamente para detener el video
     videoInstructions.innerHTML = '';
     closeBtn.style.display = 'none';
 });
