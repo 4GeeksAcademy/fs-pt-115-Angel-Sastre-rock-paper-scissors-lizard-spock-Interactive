@@ -1,6 +1,7 @@
 const choices = ["Rock", "Paper", "Scissors", "Lizard", "Spock"];
 
-const buttons = document.querySelectorAll('button');
+
+const buttons = document.querySelectorAll('.button');
 const result = document.getElementById('result');
 const resultImg = document.getElementById('resultImg');
 const showVideoBtn = document.getElementById('showVideoBtn');
@@ -30,22 +31,22 @@ function handlePlayerChoice(event) {
     play(playerChoice);
 }
 
-function play(opcionJugador) {
-    const opcionMaquina = choices[Math.floor(Math.random() * choices.length)];
+function play(playerChoice) {
+    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
-    if (opcionJugador === opcionMaquina) {
-        result.textContent = `Draw. Both chose ${opcionJugador}.`;
+    if (playerChoice === computerChoice) {
+        result.textContent = `Draw. Both chose ${playerChoice}.`;
         resultImg.src = images.draw;
         return;
     }
 
-    if (rules[opcionJugador].winsAgainst.includes(opcionMaquina)) {
-        const mensaje = rules[opcionJugador].message[opcionMaquina];
-        result.textContent = `You won! ${mensaje}.  Sheldon chose ${opcionMaquina}.`;
+    if (rules[playerChoice].winsAgainst.includes(computerChoice)) {
+        const message = rules[playerChoice].message[computerChoice];
+        result.textContent = `You won! ${message}.  Sheldon chose ${computerChoice}.`;
         resultImg.src = images.win;
     } else {
-        const mensaje = rules[opcionMaquina].message[opcionJugador];
-        result.textContent = `${mensaje}. Sheldon won. Sheldon chose ${opcionMaquina}.`;
+        const message = rules[computerChoice].message[playerChoice];
+        result.textContent = `${message}. Sheldon won. Sheldon chose ${computerChoice}.`;
         resultImg.src = images.lose;
     }
 }
